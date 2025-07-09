@@ -1,36 +1,4 @@
-"use stirct";
-
-//Function declaration (fungsi deklarasi)
-
-function fruitProcessor(manggo, banana) {
-  let juice =
-    manggo != 0 && banana != 0
-      ? `this juice contains ${manggo} manggo fruits and ${banana} Bananas fruit`
-      : "No fruit in this juice :(";
-
-  return juice;
-}
-
-manggoAndBanana = fruitProcessor(10, 5);
-manggoJuice = fruitProcessor(100, 0);
-
-console.log(manggoAndBanana);
-console.log(manggoJuice);
-
-//Function expression
-const calcAge = function (birthyear, currentYear) {
-  return currentYear - birthyear;
-};
-
-console.log(calcAge(2006, 2025));
-
-//arrow function
-const retirement = (name, age) => {
-  const countRetirement = 65 - age;
-  return `${name} will be retired in ${countRetirement} years.`;
-};
-
-console.log(retirement("Delano", 19));
+"use strict";
 
 //CHALLANGES 1
 /* 
@@ -88,22 +56,6 @@ const checkWinner = function (dolphinsAverageScore, koalasAverageScore) {
 console.log(checkWinner(dolphinsAverageScore1, koalasAverageScore1));
 console.log(checkWinner(dolphinsAverageScore2, koalasAverageScore2));
 
-//ARRAY
-const birthYears = [2006, 1976, 1981, 2009, 2017];
-let age = [];
-
-for (let i = 0; i < birthYears.length; i++) {
-  age.push(calcAge(birthYears[i], 2025));
-}
-
-console.log(age);
-let deletedElement = [];
-
-for (let i = 0; i < age.length; i++) {
-  deletedElement.push(age.shift()); //
-}
-console.log(deletedElement);
-
 //MINI CASE 1 : Sistem Pendaftaran,lihat,dan cari Peserta Seminar
 
 let peserta = [];
@@ -155,10 +107,12 @@ TEST DATA: 125, 555, and 44.
 const bills = [125, 555, 44];
 let tip = [];
 let total = [];
+
+let countTip;
 const calcTip = function (bills) {
   for (let i = 0; i < bills.length; i++) {
     if (bills[i] >= 50 && bills[i] <= 300) {
-      let countTip = bills[i] * (15 / 100);
+      countTip = bills[i] * (15 / 100);
       tip.push(countTip);
       total.push(bills[i] + countTip);
     } else {
@@ -173,43 +127,3 @@ calcTip(bills);
 console.log("Bills : " + bills);
 console.log("Tip : " + tip);
 console.log("Total Price : " + total);
-
-//OBJECTS
-const delano = {
-  firstName: "Delano",
-  lastName: "Ramadhan",
-  birthYear: 2006,
-  job: "Student",
-  friends: ["Fairuz", "Bimo", "Dika"],
-  calcAge: function () {
-    this.age = 2025 - this.birthYear;
-    return this.age;
-  },
-  hasDriverLicense: function () {
-    return this.age >= 17 ? "has a Driver License" : "has no Driver License";
-  },
-  getSummary: function () {
-    return `${this.firstName} is a ${this.calcAge()}-year old ${
-      this.job
-    }. and he ${this.hasDriverLicense()}`;
-  },
-
-  inner: {
-    name: "ilham",
-    output: function () {
-      thisDelano = delano;
-      return `Halooooo nama saya ${
-        thisDelano.firstName
-      }, umur saya ${thisDelano.calcAge()} saya suka main sama ${this.name}`;
-    },
-  },
-};
-
-delano.calcAge();
-
-const string = `${delano.firstName} has ${delano["friends"].length}, and his best friends is called ${delano["friends"][1]}`;
-console.log(string);
-
-console.log(delano.getSummary());
-
-console.log(delano.inner.output());
