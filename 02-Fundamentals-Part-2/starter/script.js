@@ -87,3 +87,89 @@ const checkWinner = function (dolphinsAverageScore, koalasAverageScore) {
 
 console.log(checkWinner(dolphinsAverageScore1, koalasAverageScore1));
 console.log(checkWinner(dolphinsAverageScore2, koalasAverageScore2));
+
+//ARRAY
+const birthYears = [2006, 1976, 1981, 2009, 2017];
+let age = [];
+
+for (let i = 0; i < birthYears.length; i++) {
+  age.push(calcAge(birthYears[i], 2025));
+}
+
+console.log(age);
+let deletedElement = [];
+
+for (let i = 0; i < age.length; i++) {
+  deletedElement.push(age.shift()); //
+}
+console.log(deletedElement);
+
+//MINI CASE 1 : Sistem Pendaftaran,lihat,dan cari Peserta Seminar
+
+let peserta = [];
+
+//daftar
+const daftarPeserta = function (nama) {
+  return peserta.push(nama);
+};
+
+daftarPeserta("Delano");
+daftarPeserta("Bariq");
+
+const tampilkanPeserta = () => {
+  for (let i = 0; i < peserta.length; i++) {
+    console.log(`${i + 1}. ${peserta[i]}`);
+  }
+};
+
+tampilkanPeserta();
+
+const cekPeserta = (nama) =>
+  peserta.includes(nama)
+    ? `${nama} sudah terdaftar.`
+    : `${nama} belum terdaftar`;
+
+console.log(cekPeserta("Delano"));
+console.log(cekPeserta("Siska"));
+tampilkanPeserta();
+
+//CHALLANGES 2
+/* 
+
+Steven wants you to improve his tip calculator, using the same rules as before — tip 15% of the bill if the bill value is between 50 and 300, and if the value is different, the tip is 20%.
+
+Your tasks:
+
+Write a function calcTip that takes any bill value as an input and returns the corresponding tip, calculated based on the rules above (you can check out the code from the first tip calculator challenge if you need to). Use the function type you like the most. Test the function using a bill value of 100.
+
+And now let's use arrays! So, create an array called bills containing the test data below.
+
+Create an array called tips containing the tip value for each bill, calculated from the function you created before.
+
+BONUS: Create an array totals containing the total values, so the bill + tip.
+
+TEST DATA: 125, 555, and 44.
+
+*/
+
+const bills = [125, 555, 44];
+let tip = [];
+let total = [];
+const calcTip = function (bills) {
+  for (let i = 0; i < bills.length; i++) {
+    if (bills[i] >= 50 && bills[i] <= 300) {
+      let countTip = bills[i] * (15 / 100);
+      tip.push(countTip);
+      total.push(bills[i] + countTip);
+    } else {
+      countTip = bills[i] * (20 / 100);
+      tip.push(countTip);
+      total.push(bills[i] + countTip);
+    }
+  }
+};
+
+calcTip(bills);
+console.log("Bills : " + bills);
+console.log("Tip : " + tip);
+console.log("Total Price : " + total);
