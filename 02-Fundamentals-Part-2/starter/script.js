@@ -173,3 +173,46 @@ calcTip(bills);
 console.log("Bills : " + bills);
 console.log("Tip : " + tip);
 console.log("Total Price : " + total);
+
+//OBJECTS
+const delano = {
+  firstName: "Delano",
+  lastName: "Ramadhan",
+  birthYear: 2006,
+  job: "Student",
+  friends: ["Fairuz", "Bimo", "Dika"],
+  calcAge: function () {
+    this.age = 2025 - this.birthYear;
+    return this.age;
+  },
+  hasDriverLicense: function () {
+    if (this.age >= 17) {
+      return "has driver License";
+    } else {
+      return "has no driver License";
+    }
+  },
+  getSummary: function () {
+    return `${this.firstName} is a ${this.calcAge()}-year old ${
+      this.job
+    }. and he ${this.hasDriverLicense()}`;
+  },
+
+  inner: {
+    name: "ilham",
+    output: function () {
+      thisDelano = delano;
+      return `Halooooo nama saya ${
+        thisDelano.firstName
+      }, umur saya ${thisDelano.calcAge()} saya suka main sama ${this.name}`;
+    },
+  },
+};
+delano.calcAge();
+
+const string = `${delano.firstName} has ${delano["friends"].length}, and his best friends is called ${delano["friends"][1]}`;
+console.log(string);
+
+console.log(delano.getSummary());
+
+console.log(delano.inner.output());
