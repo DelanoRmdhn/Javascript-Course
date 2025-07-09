@@ -186,11 +186,7 @@ const delano = {
     return this.age;
   },
   hasDriverLicense: function () {
-    if (this.age >= 17) {
-      return "has driver License";
-    } else {
-      return "has no driver License";
-    }
+    return this.age >= 17 ? "has a Driver License" : "has no Driver License";
   },
   getSummary: function () {
     return `${this.firstName} is a ${this.calcAge()}-year old ${
@@ -208,6 +204,7 @@ const delano = {
     },
   },
 };
+
 delano.calcAge();
 
 const string = `${delano.firstName} has ${delano["friends"].length}, and his best friends is called ${delano["friends"][1]}`;
