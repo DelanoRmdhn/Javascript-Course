@@ -77,6 +77,16 @@ console.log(String(number) + "11"); // converting 24 to String manually then add
 //coercion
 console.log(number + "11" - 2); // 24 + '11' = 2411 - 2 = 2409. this called coercion
 
+//== VS ===
+
+let nilai = 100;
+
+let looseEquality = nilai == "100" ? "Lulus" : "Tidak Lulus";
+console.log(looseEquality);
+
+let strictEquality = nilai === "100" ? "Lulus" : "Tidak Lulus";
+console.log(strictEquality);
+
 //challange 3
 let bill = 430;
 let tip;
