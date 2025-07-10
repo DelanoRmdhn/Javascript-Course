@@ -90,3 +90,64 @@ console.log(string);
 console.log(delano.getSummary());
 
 console.log(delano.inner.output());
+
+//LOOPING
+
+//01) FOR LOOP
+
+const delanoArray = [
+  "Delano Bariq Ramadhan",
+  2025 - 2006,
+  "Student",
+  ["Fairuz", "Bimo", "Dika"],
+];
+
+for (let i = 0; i < delanoArray.length; i++) {
+  console.log(delanoArray[i]);
+
+  if (Array.isArray(delanoArray[i])) {
+    for (let j = 0; j < delanoArray[i].length; j++) {
+      console.log(delanoArray[i][j]);
+    }
+  }
+}
+
+//Mini case
+const friendsBirhtYears = [2006, 1976, 1981, 2007, 2017];
+const friendsAges = [];
+
+for (let i = 0; i < friendsBirhtYears.length; i++) {
+  friendsAges.push(calcAge(friendsBirhtYears[i], 2025));
+}
+
+console.log(friendsAges);
+
+for (let i = 0; i < 3; i++) {
+  console.log(`------ Aktivitas saya ke-${i + 1}`);
+
+  for (let j = 0; j < 5; j++) {
+    if (i === 0) {
+      console.log(`🚲 Bersepeda sebanyak ${j + 1} kali`);
+    } else if (i === 1) {
+      console.log(`🏊‍♂️ Berenang sebanyak ${j + 1} kali`);
+    } else {
+      console.log(`Mencuci piring ...... ${j + 1} kali`);
+    }
+  }
+}
+
+//02) WHILE LOOP
+
+let randomNum;
+let counter = 0;
+
+while (randomNum !== 6) {
+  randomNum = Math.trunc(Math.random() * 6) + 1;
+  counter++;
+
+  if (randomNum === 6 && counter == 1)
+    console.log(
+      `Sangat Beruntung!!! kamu Dapat angka 6 setelah ${counter} repetisi perulangan....`
+    );
+  else console.log(`Belum beruntung kamu dapat angka ${randomNum}`);
+}
