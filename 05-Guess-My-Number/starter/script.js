@@ -6,6 +6,11 @@ let score = 20;
 
 document.querySelector('.number').textContent = secretNumber;
 
+//Callback function untuk backgroundColor
+function winningCondition() {
+  document.querySelector('body').style.backgroundColor = '#60b347';
+  document.querySelector('.number').style.width = '30rem';
+}
 //Membuat fitur input & jika user tidak menginput
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
@@ -14,6 +19,7 @@ document.querySelector('.check').addEventListener('click', function () {
   if (!guess) {
     document.querySelector('.message').textContent = '❌ No Input received!';
   } else if (guess === secretNumber) {
+    winningCondition();
     document.querySelector('.message').textContent = '🎉 Correct Number!';
   } else if (guess) {
     if (score > 1) {
