@@ -9,20 +9,18 @@
   </head>
   <body>
     <main>
-      <div class="modal hidden">
+      <div class="modal">
         <button class="close-modal">&times;</button>
-        <h1>I'm a modal window 😍</h1>
+        <h1>Aturan Permainan 🎲</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          Tujuan: Pemain pertama yang mencapai 100 poin menang. <br />
+          Roll Dice: Jika angka ≠ 1 → nilai ditambahkan ke current score.<br />
+          Jika angka = 1 → current score hangus, ganti pemain. <br />
+          Hold: Menyimpan current score ke total score. Ganti pemain. <br />
+          New Game: Reset semua skor dan mulai ulang.
         </p>
       </div>
-      <div class="overlay hidden"></div>
+      <div class="overlay"></div>
 
       <section class="player player--0 player--active">
         <h2 class="name" id="name--0">Player 1</h2>
@@ -47,5 +45,6 @@
       <button class="btn btn--hold">📥 Hold</button>
     </main>
     <script src="script.js"></script>
+    <script src="modalHandler.js"></script>
   </body>
 </html>
