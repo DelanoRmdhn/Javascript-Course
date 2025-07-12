@@ -69,7 +69,7 @@ const resetCurrentScore = function (playerCurrentScore) {
 };
 
 const checkWinner = function (player, score) {
-  if (currentActivePlayer(player) && score >= 10) {
+  if (currentActivePlayer(player) && score >= 100) {
     player.classList.add('player--winner');
     player.classList.add('name');
     gameCondition = false;
