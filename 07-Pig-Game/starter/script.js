@@ -23,6 +23,10 @@ const diceImage = document.querySelector('.dice');
 //4) GLOBAL VARIABLES
 let dice;
 let totalCurrentScore = 0;
+let totalScoreP1 = 0;
+let totalScoreP2 = 0;
+let gameCondition = true;
+
 //STARTING CONDITIONS
 scoreP1.textContent = 0;
 scoreP2.textContent = 0;
@@ -37,8 +41,12 @@ const diceGenerator = function () {
   return Math.trunc(Math.random() * 6) + 1;
 };
 
+const currentActivePlayer = function (player) {
+  return player.classList.contains('player--active');
+};
+
 const switchPlayer = function () {
-  player1.classList.contains('player--active')
+  currentActivePlayer(player1)
     ? resetCurrentScore(currentScoreP1)
     : resetCurrentScore(currentScoreP2);
 
@@ -48,7 +56,7 @@ const switchPlayer = function () {
 
 const addCurrentScore = function () {
   totalCurrentScore += dice;
-  if (player1.classList.contains('player--active')) {
+  if (currentActivePlayer(player1)) {
     currentScoreP1.textContent = totalCurrentScore;
   } else {
     currentScoreP2.textContent = totalCurrentScore;
@@ -60,8 +68,19 @@ const resetCurrentScore = function (playerCurrentScore) {
   return (playerCurrentScore.textContent = 0);
 };
 
+const checkWinner = function (player, score) {
+  if (currentActivePlayer(player) && score >= 10) {
+    player.classList.add('player--winner');
+    player.classList.add('name');
+    gameCondition = false;
+  } else {
+    switchPlayer();
+  }
+};
+
 //Callback Functions
 const rollDice = function () {
+  if (!gameCondition) return;
   dice = diceGenerator();
   console.log(dice);
 
@@ -75,7 +94,40 @@ const rollDice = function () {
   }
 };
 
-const holdScore = function () {};
+const holdScore = function () {
+  if (!gameCondition) return;
+  if (currentActivePlayer(player1)) {
+    totalScoreP1 += totalCurrentScore;
+    scoreP1.textContent = totalScoreP1;
+    checkWinner(player1, totalScoreP1);
+  } else {
+    totalScoreP2 += totalCurrentScore;
+    scoreP2.textContent = totalScoreP2;
+    checkWinner(player2, totalScoreP2);
+  }
+};
+
+const newGame = function () {
+  openModal();
+  dice;
+  totalCurrentScore = 0;
+  totalScoreP1 = 0;
+  totalScoreP2 = 0;
+  gameCondition = true;
+
+  scoreP1.textContent = 0;
+  scoreP2.textContent = 0;
+
+  currentScoreP1.textContent = 0;
+  currentScoreP2.textContent = 0;
+
+  if (currentActivePlayer(player2)) {
+    player2.classList.remove('player--active');
+    player1.classList.add('player--active');
+  }
+
+  diceImage.classList.add('hidden');
+};
 
 //EVENT HANDLER
 //Roll Dice
@@ -83,3 +135,6 @@ btnRollDice.addEventListener('click', rollDice);
 
 //Hold Score
 btnHoldScore.addEventListener('click', holdScore);
+
+//New Game
+btnNewGame.addEventListener('click', newGame);

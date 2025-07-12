@@ -5,6 +5,12 @@ const modal = document.querySelector('.modal');
 const btnCloseModal = document.querySelector('.close-modal');
 const blurryEffect = document.querySelector('.overlay');
 
+//function openModal
+const openModal = function () {
+  modal.classList.remove('hidden');
+  blurryEffect.classList.remove('hidden');
+};
+
 //callback closeModal
 const closeModal = function (e) {
   const editClassList = function () {
