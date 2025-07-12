@@ -124,6 +124,12 @@ const newGame = function () {
   if (currentActivePlayer(player2)) {
     player2.classList.remove('player--active');
     player1.classList.add('player--active');
+
+    player2.classList.remove('player--winner');
+    player2.classList.remove('name');
+  } else {
+    player1.classList.remove('player--winner');
+    player1.classList.remove('name');
   }
 
   diceImage.classList.add('hidden');
