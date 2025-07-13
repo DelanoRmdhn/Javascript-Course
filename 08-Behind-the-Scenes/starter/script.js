@@ -25,3 +25,23 @@ function outer() {
 
 const information = outer();
 information();
+
+const nama = 'ilham';
+const aboutMe = function () {
+  const age = 50;
+
+  if (2025 - age <= 2012 && 2025 - age >= 1997) {
+    var genZ = true; // var bisa diakses oleh function.
+  }
+
+  function log() {
+    console.log(
+      `nama saya ${nama}, umur saya ${age} ${
+        genZ == true ? 'Generasi saya gen Z' : 'Saya bukan Gen Z'
+      }.`
+    );
+  }
+  log();
+};
+
+aboutMe();
